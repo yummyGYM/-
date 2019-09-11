@@ -1,0 +1,8 @@
+server:
+  port: 9001
+#用于模块之间的调用
+spring:
+  application:
+    name: tensquare-base
+  datasource:
+

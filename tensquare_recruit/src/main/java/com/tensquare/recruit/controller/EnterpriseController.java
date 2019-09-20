@@ -37,7 +37,7 @@ public class EnterpriseController {
      *
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public Result findAll() {
         return new Result(true, StatusCode.OK, "查询成功", enterpriseService.findAll());
     }
@@ -48,7 +48,7 @@ public class EnterpriseController {
      * @param id ID
      * @return
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/{id}")
     public Result findById(@PathVariable String id) {
         return new Result(true, StatusCode.OK, "查询成功", enterpriseService.findById(id));
     }
@@ -62,7 +62,7 @@ public class EnterpriseController {
      * @param size      页大小
      * @return 分页结果
      */
-    @RequestMapping(value = "/search/{page}/{size}", method = RequestMethod.POST)
+    @PostMapping(value = "/search/{page}/{size}")
     public Result findSearch(@RequestBody Map searchMap, @PathVariable int page, @PathVariable int size) {
         Page<Enterprise> pageList = enterpriseService.findSearch(searchMap, page, size);
         return new Result(true, StatusCode.OK, "查询成功", new PageResult<Enterprise>(pageList.getTotalElements(), pageList.getContent()));
@@ -74,7 +74,7 @@ public class EnterpriseController {
      * @param searchMap
      * @return
      */
-    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    @PostMapping(value = "/search")
     public Result findSearch(@RequestBody Map searchMap) {
         return new Result(true, StatusCode.OK, "查询成功", enterpriseService.findSearch(searchMap));
     }
@@ -84,7 +84,7 @@ public class EnterpriseController {
      *
      * @param enterprise
      */
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping()
     public Result add(@RequestBody Enterprise enterprise) {
         enterpriseService.add(enterprise);
         return new Result(true, StatusCode.OK, "增加成功");
@@ -95,7 +95,7 @@ public class EnterpriseController {
      *
      * @param enterprise
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/{id}")
     public Result update(@RequestBody Enterprise enterprise, @PathVariable String id) {
         enterprise.setId(id);
         enterpriseService.update(enterprise);
@@ -107,7 +107,7 @@ public class EnterpriseController {
      *
      * @param id
      */
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public Result delete(@PathVariable String id) {
         enterpriseService.deleteById(id);
         return new Result(true, StatusCode.OK, "删除成功");

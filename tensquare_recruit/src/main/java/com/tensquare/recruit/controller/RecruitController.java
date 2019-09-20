@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 /**
  * 控制器层
@@ -22,9 +23,19 @@ public class RecruitController {
 	@Autowired
 	private RecruitService recruitService;
 
+	@GetMapping(value = "/search/newlist")
+	public Result newlist(){
+		List<Recruit> newlist = recruitService.newlist();
+		return new Result(true, StatusCode.OK, "查询成功", newlist);
+	}
+	/**
+	 * 根据状态查询
+	 * @return
+	 */
 	@GetMapping(value = "/search/recommend")
 	public Result recommend(){
-		return null;
+		List<Recruit> recommend = recruitService.recommend();
+		return new Result(true,StatusCode.OK,"查询成功", recommend);
 	}
 
 	/**
@@ -45,7 +56,6 @@ public class RecruitController {
 	public Result findById(@PathVariable String id){
 		return new Result(true,StatusCode.OK,"查询成功",recruitService.findById(id));
 	}
-
 
 	/**
 	 * 分页+多条件查询

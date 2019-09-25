@@ -10,7 +10,8 @@
         <option value="$PROJECT_DIR$/tensquare_recruit/pom.xml" />
         <option value="$PROJECT_DIR$/tensquare_qa/pom.xml" />
         <option value="$PROJECT_DIR$/tensquare_article/pom.xml" />
-        <option value="$PROJECT_DIR$/tensquare_gathering/pom.xml" />
+        <option value="$PROJECT_DIR$/tensquare_common/pom.xml" />
+        <option value="$PROJECT_DIR$/tensquare_spit/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
